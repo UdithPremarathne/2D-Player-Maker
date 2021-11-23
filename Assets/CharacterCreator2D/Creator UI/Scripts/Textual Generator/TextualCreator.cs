@@ -1,3 +1,5 @@
+using Assets.CharacterCreator2D.Creator_UI.Scripts.Textual_Generator.Models;
+using Assets.CharacterCreator2D.Creator_UI.Scripts.Textual_Generator.TextualDecorator;
 using CharacterCreator2D;
 using CharacterCreator2D.UI;
 using System.Collections;
@@ -9,9 +11,11 @@ public class TextualCreator : MonoBehaviour
 {
     public CharacterViewer character;
     bool _processing = false;
-    public int CharacterName;
+    public string CharacterName;
     public RuntimeDialog dialog;
     public InputField inputfield;
+    //public InputField bodyfield, hairfield, facialHairfield;
+
 
     public void LoadCharacterFromJSON(string path)
     {
@@ -28,9 +32,14 @@ public class TextualCreator : MonoBehaviour
     {
         _processing = true;
         // Character is being created
-        string path = string.Format("Assets/TestCharacters/Test{0}.json", CharacterName);
+        CharacterName = inputfield.text;
+        string path = string.Format("Assets/TestCharacters/{0}.json", CharacterName);
+        // path = ModelDecoratorDemo.Decorate(new Specification() { Gender = 1 });
+        // string jsone = ModelDecoratorDemo.GetJSONFromSpecification();
+        Debug.Log(path);
+        //Debug.Log(jsone);
         LoadCharacterFromJSON(path);
-        // Clears input field
+        //Clears input field
         ClearInput();
         _processing = false;
     }
