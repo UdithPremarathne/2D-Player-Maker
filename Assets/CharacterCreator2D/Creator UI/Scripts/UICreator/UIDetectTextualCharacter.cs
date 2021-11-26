@@ -57,7 +57,7 @@ namespace CharacterCreator2D.UI
             SlotCategory.OffHand
         };
 
-        public void Randomize()
+        public void Detection()
         {
             List<SlotCategory> excludedparts = new List<SlotCategory>();
             List<SlotCategory> excludedcolors = new List<SlotCategory>();
